@@ -1,4 +1,4 @@
-const search = require('../word_search.js')
+const search = require('../wordSearch.js')
 
 
 describe ('searchStraightLineInclude', () => {
