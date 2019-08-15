@@ -1,6 +1,3 @@
-const search = require('../wordSearch.js')
-
-
 describe ('searchStraightLineInclude', () => {
   it('', () => {
     expect()
