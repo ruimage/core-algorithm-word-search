@@ -1,8 +1,8 @@
-## Поиск слова
+## Word search
 
-В этой задаче нужно будет написать алгоритм поиска, который скажет, можно ли найти входное слово в головоломке поиска слов, которая тоже подается функции на вход.
+In this exercise, you will need to write a search algorithm that will tell you whether you can find the input word in the word search puzzle, which is also passed to the function as input. 
 
-#### Структура данных головоломки
+#### Structure of the puzzle data
 
 ```javascript
 let puzzle = [
@@ -15,54 +15,53 @@ let puzzle = [
   ["z", "s", "b", "n", "u", "i", "r"]
 ]
 ```
-*Рисунок 1*. Представление головоломки поиска слов в виде вложенного массива
+*Figure 1*. Representation of a word search puzzle as a nested array
 
-Ты будешь представлять свою головоломку поиска слов в виде вложенных массивов. Пазл в целом будет представлен внешним массивом. Каждый ряд в головоломке будет представлен одним из внутренних массивов (см. Рисунок 1).
+You will represent your word search puzzle as nested arrays. The puzzle as a whole will be represented by an external array. Each row in the puzzle will be represented by one of the internal arrays (see Figure 1).
 
-### Release 0. Поиск слов в строке
+### Release 0. Search for words in a string
 
-![Поиск слов в строках](readme-assets/straight-word.gif)
+![Word search in strings](readme-assets/straight-word.gif)
 
-*Рисунок 2*. Нахождение слов *foxes*, *otters* и *bison* в строке.
+*Figure 2*. Finding words *foxes*, *otters* and *bison* in a string.
 
-В этом релизе ты напишешь функцию `straightLineInclude`. 
+In this release you will write a function `straightLineInclude`. 
 
-Твоя функция примет два параметра: 
-1. Слово, которое ты ищешь.
-2. Головоломку поиска слов, смоделированную, как вложенный массив. 
+Your function will accept two parameters:
+1. The word you are looking for.
+2. Word search puzzle that is created as a nested array. 
 
-Метод выдаст `true`, если слово можно найти в головоломке, и` false` - если нет. Ты будешь следовать традиционному поиску по словам, который позволяет находить слова только в строках (см. Рисунок 2).
+The method returns `true` if the word can be found in the puzzle and `false` if it cannot be found. 
+You will follow a traditional word search algorithm, which only finds words in strings (see Figure 2).
+As always, you need to write tests to make sure the method works as expected.
 
-Как всегда, тебе нужно документировать поведение метода с помощью тестов.
+**Rules**
+- Words can be found horizontally, vertially and diagonally.
+- Words can be written from left to right and vice versa.
 
-**Правила**
-- Слова могут быть найдены в горизонтальных, вертикальных и диагональных строках.
-- Слова могут быть записаны слева направо и наоборот.
+### Release 1. Search for words in a snake
 
-### Release 1. Поиск слов в змейке
+![search for words in a snake](readme-assets/snaking-word.gif)
 
-![поиск слов в змейке](readme-assets/snaking-word.gif)
+*Figure 3*. Finding the word *nighthawks*.
 
-*Рисунок 3*. Нахождение слова *nighthawks*.
+In this release, you need to write the `snakingInclude` method. This method will take the same parameters as the `straightLineInclude` method and return the same values, only the algorithm that is used to find words will be different. In fact, you need to remove the restriction that words must be in the same row, column or diagonal. Instead, words can be built from adjacent letters, not only from those lying on the same line, as in the figure (see Figure 3).
 
-В этом релизе тебе необходимо написать метод `snakingInclude`. Этот метод будет принимать те же параметры, что и метод `straightLineInclude`, и возвращать те же самые значения, но только алгоритм, используемый для поиска слов, будет другим. По сути - тебе необходимо убрать ограничение того, что слова обязательно должны находиться в одной строке, столбце или диагонали. Вместо этого слова могут строиться из соседствующих букв, а не только лежащих на одной линии, как на рисунке (см. Рисунок 3).
+You also need to test this method.
 
-Тебе также необходимо сделать проверку этого метода.
-
-**Правила**
-- Каждая буква в головоломке может использоваться только один раз за слово.
+**Rules**
+- Each letter in the puzzle can only be used once per word.
 
 
-### Release 2. Создание пользовательского интерфейса
+### Release 2. Creating a user interface
 
-Давай напишем страницу, которая отображает головоломку для поиска слов, и просит ввести слова, для которых нужно проводить поиск. После ввода каждого слова мы должны сообщать, возможно ли найти слово в головоломке.
+Let's create a webpage that displays a word search puzzle and asks for the words to search for. After entering each word, we have to report whether it is possible to find the word in the puzzle.
 
-Если слово найдено, можно ли наглядно показать его пользователям?
+If the word is found, can we somehow show it to the user?
 
-## Выводы
+## Conclusion
 
-Алгоритм змейки является одной из сложных задач, с которыми ты сталкиваешься во время обучения в Bootcamp. Что ты думаешь об этом? Все ли прошло хорошо? В каких местах возникали трудности?
-
-Каков твой подход к тестированию? Начал(а) ли ты с более простых слов во время поиска? Может ли быть, слово из одной буквы, за которым следуют две буквы?
+The snake algorithm is one of the trickiest challenges you'll face while studying at Bootcamp. What do you think about it? Did everything go well? Where did the difficulties arise?
+What's your approach to testing? Did you start with simpler words while searching? Could it be a one-letter word followed by two letters?
 
 [wikipedia word search]: https://en.wikipedia.org/wiki/Word_search
