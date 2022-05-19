@@ -1,14 +1,9 @@
 const { puzzle } = require('./data/data');
 
-const getRSymbol = (puzzle, i, j) => {
-  j++;
-  if (puzzle[i] === undefined) return null;
-  return puzzle[i][j] || null;
-};
 
 function searchStraightLineInclude(word, puzzle) {
-  for (let j = 0; j < puzzle.length; i++) {
-    for (let i = 0; i < puzzle.length; j++) {
+ for (let j = 0; j < puzzle.length; j++) {
+    for (let i = 0; i < puzzle.length; i++) {
       if (searchInDirection(puzzle, word, i, j, 0,getRSymbol)) return true;
       if (searchInDirection(puzzle, word, i, j, 0,getDSymbol)) return true;
       if (searchInDirection(puzzle, word, i, j, 0,getURSymbol)) return true;
@@ -22,58 +17,65 @@ function searchSnakingInclude(word, puzzle) {
 }
 
 const searchInDirection = (puzzle, word, i, j, currentIter, shiftFunction) => {
-  if (currentIter === 0 && word[i] !== puzzle[i][j]) return null;
-  const SY = shiftFunction(puzzle, i, j);
+  if (word[currentIter] !== puzzle[i][j]) return null;
+  const objXY = {i, j};
+  const SY = shiftFunction(puzzle,objXY );
   if (SY == null) return null;
   if (currentIter === word.length - 2) return true;
-  return searchInDirection(puzzle, word, i, j, currentIter + 1,shiftFunction);
+  return searchInDirection(puzzle, word, objXY.i, objXY.j, currentIter + 1,shiftFunction);
 };
 
-
-const getLSymbol = (puzzle, i, j) => {
-  j--;
-  if (puzzle[i] === undefined) return null;
-  return puzzle[i][j] || null;
+const getRSymbol = (puzzle, objXY) => {
+  objXY.j++;
+  if (puzzle[objXY.i] === undefined) return null;
+  return puzzle[objXY.i][objXY.j] || null;
 };
 
-const getUSymbol = (puzzle, i, j) => {
-  i--;
-  if (puzzle[i] === undefined) return null;
-  return puzzle[i][j] || null;
+const getLSymbol = (puzzle, objXY) => {
+
+  objXY.j--;
+  if (puzzle[objXY.i] === undefined) return null;
+  return puzzle[objXY.i][objXY.j] || null;
 };
 
-const getDSymbol = (puzzle, i, j) => {
-  i++;
-  if (puzzle[i] === undefined) return null;
-  return puzzle[i][j] || null;
+const getUSymbol = (puzzle, objXY) => {
+  objXY.i--;
+  if (puzzle[objXY.i] === undefined) return null;
+  return puzzle[objXY.i][objXY.j] || null;
 };
 
-const getURSymbol = (puzzle, i, j) => {
-  i--;
-  j++;
-  if (puzzle[i] === undefined) return null;
-  return puzzle[i][j] || null;
+const getDSymbol = (puzzle, objXY) => {
+  objXY.i++;
+  if (puzzle[objXY.i] === undefined) return null;
+  return puzzle[objXY.i][objXY.j] || null;
 };
 
-const getULSymbol = (puzzle, i, j) => {
-  i--;
-  j--;
-  if (puzzle[i] === undefined) return null;
-  return puzzle[i][j] || null;
+const getURSymbol = (puzzle, objXY) => {
+  objXY.i--;
+  objXY.j++;
+  if (puzzle[objXY.i] === undefined) return null;
+  return puzzle[objXY.i][objXY.j] || null;
 };
 
-const getDRSymbol = (puzzle, i, j) => {
-  i++;
-  j++;
-  if (puzzle[i] === undefined) return null;
-  return puzzle[i][j] || null;
+const getULSymbol = (puzzle, objXY) => {
+  objXY.i--;
+  objXY.j--;
+  if (puzzle[objXY.i] === undefined) return null;
+  return puzzle[objXY.i][objXY.j] || null;
 };
 
-const getDLSymbol = (puzzle, i, j) => {
-  i++;
-  j--;
-  if (puzzle[i] === undefined) return null;
-  return puzzle[i][j] || null;
+const getDRSymbol = (puzzle, objXY) => {
+  objXY.i++;
+  objXY.j++;
+  if (puzzle[objXY.i] === undefined) return null;
+  return puzzle[objXY.i][objXY.j] || null;
+};
+
+const getDLSymbol = (puzzle, objXY) => {
+  objXY.i++;
+  objXY.j--;
+  if (puzzle[objXY.i] === undefined) return null;
+  return puzzle[objXY.i][objXY.j] || null;
 };
 
 module.exports = {
@@ -88,5 +90,4 @@ module.exports = {
   getDRSymbol,
   getDLSymbol,
 };
-
 
