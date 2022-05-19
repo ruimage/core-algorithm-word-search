@@ -73,8 +73,8 @@ describe('searchStraightLineInclude', () => {
 
 });
 
-// describe('searchSnakingInclude', () => {
-//   it('проверка нахождения слова nighthawks', () => {
-//     expect(searchSnakingInclude(data.wordsSnake[0], data.puzzle)).toBe(true);
-//   });
-// });
+describe('searchSnakingInclude', () => {
+  it('проверка нахождения слова nighthawks', () => {
+    expect(searchSnakingInclude(data.wordsSnake[0], data.puzzle)).toBe(true);
+  });
+});
