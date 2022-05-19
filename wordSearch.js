@@ -10,6 +10,8 @@ function searchStraightLineInclude(word, puzzle) {
   for (let j = 0; j < puzzle.length; i++) {
     for (let i = 0; i < puzzle.length; j++) {
       if (searchInDirection(puzzle, word, i, j, 0,getRSymbol)) return true;
+      if (searchInDirection(puzzle, word, i, j, 0,getDSymbol)) return true;
+      if (searchInDirection(puzzle, word, i, j, 0,getURSymbol)) return true;
     }
   }
   return false;

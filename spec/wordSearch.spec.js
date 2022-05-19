@@ -53,18 +53,18 @@ describe('проверка функциоаналп получения сосе�
   });
 });
 
-// describe('searchStraightLineInclude', () => {
-//   it('проверка нахождения слова foxes', () => {
-//     expect(searchStraightLineInclude(data.wordsStraight[0], data.puzzle)).toBe(true);
-//   });
-//
-//   it('проверка нахождения слова otters', () => {
-//     expect(searchStraightLineInclude(data.wordsStraight[1], data.puzzle)).toBe(true);
-//   });
-//
-//   it('проверка нахождения слова bison', () => {
-//     expect(searchStraightLineInclude(data.wordsStraight[2], data.puzzle)).toBe(true);
-//   });
+describe('searchStraightLineInclude', () => {
+  it('проверка нахождения слова foxes', () => {
+    expect(searchStraightLineInclude(data.wordsStraight[0], data.puzzle)).toBe(true);
+  });
+
+  it('проверка нахождения слова otters', () => {
+    expect(searchStraightLineInclude(data.wordsStraight[1], data.puzzle)).toBe(true);
+  });
+
+  // it('проверка нахождения слова bison', () => {
+  //   expect(searchStraightLineInclude(data.wordsStraight[2], data.puzzle)).toBe(true);
+  // });
 //
 //   it('проверка нахождения слова crown', () => {
 //     expect(searchStraightLineInclude(data.wordsStraight[2], data.puzzle)).toBe(false);
@@ -75,4 +75,4 @@ describe('проверка функциоаналп получения сосе�
 //   it('проверка нахождения слова nighthawks', () => {
 //     expect(searchSnakingInclude(data.wordsSnake[0], data.puzzle)).toBe(true);
 //   });
-// });
+});
