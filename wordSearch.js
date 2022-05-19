@@ -1,50 +1,48 @@
 const { puzzle } = require('./data/data');
 
-
 function searchStraightLineInclude(word, puzzle) {
- for (let j = 0; j < puzzle.length; j++) {
+  for (let j = 0; j < puzzle.length; j++) {
     for (let i = 0; i < puzzle.length; i++) {
-      if (searchInDirection(puzzle, word, i, j, 0,getRSymbol)) return true;
-      if (searchInDirection(puzzle, word, i, j, 0,getDSymbol)) return true;
-      if (searchInDirection(puzzle, word, i, j, 0,getURSymbol)) return true;
+      if (searchInDirection(puzzle, word, i, j, 0, getRSymbol)) return true;
+      if (searchInDirection(puzzle, word, i, j, 0, getDSymbol)) return true;
+      if (searchInDirection(puzzle, word, i, j, 0, getURSymbol)) return true;
     }
   }
   return false;
 }
 
 function searchSnakingInclude(word, puzzle) {
-
-  const arrFunc = [getRSymbol,getLSymbol,getUSymbol,getDSymbol,getURSymbol,getULSymbol,getDRSymbol,getDLSymbol];
+  const arrFunc = [getRSymbol, getLSymbol, getUSymbol, getDSymbol, getURSymbol, getULSymbol, getDRSymbol, getDLSymbol];
 
   for (let j = 0; j < puzzle.length; j++) {
     for (let i = 0; i < puzzle.length; i++) {
-        if (searchAround(puzzle,word,i,j,0,arrFunc)==true) return true;
+      if (searchAround(puzzle, word, i, j, 0, arrFunc) == true) return true;
     }
   }
   return false;
 }
 
-
-const searchAround = (puzzle, word, i, j,currentIter, arrFunc) => {
+const searchAround = (puzzle, word, i, j, currentIter, arrFunc) => {
   if (word[currentIter] !== puzzle[i][j]) return null;
-  const objXY = {i, j};
-  for (let k = 0; k < arrFunc; k++) {
-    const SY = shiftFunction(puzzle,objXY );
+  const objXY = { i, j };
+  for (let k = 0; k < arrFunc.length; k++) {
+    const SY = arrFunc[k](puzzle, objXY);
     if (SY !== null) {
       if (currentIter === word.length - 2) return true;
-      return searchInDirection(puzzle, word, objXY.i, objXY.j, currentIter + 1,arrFunc);
-      };
+      if (SY === word[currentIter+1]) {
+        return searchAround(puzzle, word, objXY.i, objXY.j, currentIter + 1, arrFunc);
+      }
+    }
   }
-}
-
+};
 
 const searchInDirection = (puzzle, word, i, j, currentIter, shiftFunction) => {
   if (word[currentIter] !== puzzle[i][j]) return null;
-  const objXY = {i, j};
-  const SY = shiftFunction(puzzle,objXY );
+  const objXY = { i, j };
+  const SY = shiftFunction(puzzle, objXY);
   if (SY == null) return null;
   if (currentIter === word.length - 2) return true;
-  return searchInDirection(puzzle, word, objXY.i, objXY.j, currentIter + 1,shiftFunction);
+  return searchInDirection(puzzle, word, objXY.i, objXY.j, currentIter + 1, shiftFunction);
 };
 
 const getRSymbol = (puzzle, objXY) => {
@@ -54,7 +52,6 @@ const getRSymbol = (puzzle, objXY) => {
 };
 
 const getLSymbol = (puzzle, objXY) => {
-
   objXY.j--;
   if (puzzle[objXY.i] === undefined) return null;
   return puzzle[objXY.i][objXY.j] || null;
@@ -113,4 +110,4 @@ module.exports = {
   getDLSymbol,
 };
 
-console.log(searchSnakingInclude('nighthawks',puzzle));
+console.log(searchSnakingInclude('akots', puzzle));
