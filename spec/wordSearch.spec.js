@@ -13,43 +13,43 @@ describe('проверка функциоаналп получения сосе�
   const { puzzle } = data;
 
   it('должно получить символ справа от текущего в массиве', () => {
-    expect(getRSymbol(puzzle, 2, 1)).toBe('w');
-    expect(getRSymbol(puzzle, 6, 0)).toBe(null);
+    expect(getRSymbol(puzzle, 2, 1)).toBe('c');
+    expect(getRSymbol(puzzle, 6, 6)).toBe(null);
   });
 
   it('должно получить символ справа вверх от текущего в массиве', () => {
-    expect(getURSymbol(puzzle, 2, 1)).toBe('o');
-    expect(getURSymbol(puzzle, 6, 0)).toBe(null);
+    expect(getURSymbol(puzzle, 2, 1)).toBe('a');
+    expect(getURSymbol(puzzle, 0, 6)).toBe(null);
   });
 
   it('должно получить символ справа вниз от текущего в массиве', () => {
-    expect(getDRSymbol(puzzle, 2, 1)).toBe('k');
-    expect(getDRSymbol(puzzle, 6, 0)).toBe(null);
+    expect(getDRSymbol(puzzle, 2, 1)).toBe('s');
+    expect(getDRSymbol(puzzle, 0, 6)).toBe(null);
   });
 
   it('должно получить символ слева от текущего в массиве', () => {
-    expect(getLSymbol(puzzle, 2, 1)).toBe('o');
-    expect(getLSymbol(puzzle, 0, 1)).toBe(null);
+    expect(getLSymbol(puzzle, 2, 1)).toBe('i');
+    expect(getLSymbol(puzzle, 0, 0)).toBe(null);
   });
 
   it('должно получить символ слева вверх от текущего в массиве', () => {
-    expect(getULSymbol(puzzle, 2, 1)).toBe('k');
-    expect(getULSymbol(puzzle, 0, 1)).toBe(null);
+    expect(getULSymbol(puzzle, 2, 1)).toBe('s');
+    expect(getULSymbol(puzzle, 0, 0)).toBe(null);
   });
 
   it('должно получить символ слева вниз от текущего в массиве', () => {
-    expect(getDLSymbol(puzzle, 2, 1)).toBe('t');
-    expect(getDLSymbol(puzzle, 0, 1)).toBe(null);
+    expect(getDLSymbol(puzzle, 2, 1)).toBe('o');
+    expect(getDLSymbol(puzzle, 6, 1)).toBe(null);
   });
 
   it('должно получить символ сверху от текущего в массиве', () => {
-    expect(getUSymbol(puzzle, 2, 1)).toBe('f');
-    expect(getUSymbol(puzzle, 2, 0)).toBe(null);
+    expect(getUSymbol(puzzle, 2, 1)).toBe('o');
+    expect(getUSymbol(puzzle, 0, 2)).toBe(null);
   });
 
   it('должно получить символ снизу от текущего в массиве', () => {
-    expect(getDSymbol(puzzle, 2, 1)).toBe('c');
-    expect(getDSymbol(puzzle, 2, 6)).toBe(null);
+    expect(getDSymbol(puzzle, 2, 1)).toBe('t');
+    expect(getDSymbol(puzzle, 6, 3)).toBe(null);
   });
 });
 
