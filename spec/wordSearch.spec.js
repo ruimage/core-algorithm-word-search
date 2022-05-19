@@ -1,5 +1,8 @@
+const data = require('../data/data');
+
 describe ('searchStraightLineInclude', () => {
-  it('', () => {
+
+  it(, () => {
     expect()
   })
 
