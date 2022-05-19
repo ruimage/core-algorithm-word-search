@@ -87,4 +87,4 @@ module.exports = {
   getDLSymbol,
 };
 
-console.log(searchStraightLineInclude('foxes', puzzle));
+
